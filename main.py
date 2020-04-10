@@ -6,11 +6,13 @@ import configparser
 import os
 from apscheduler.schedulers.background import BackgroundScheduler,BlockingScheduler
 
+
 def timedTask(cmd):
     print(datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3])
     os.system(cmd)
 
 if __name__ == '__main__':
+    os.environ['TZ'] = 'Asia/Shanghai'
     cf = configparser.ConfigParser()
     cf.read("app.conf")
     secs = cf.sections()
